@@ -1,0 +1,274 @@
+{
+    "url": "https://api.github.com/repos/arkachoudhury9-art/front-end/compare/a59aa4660b57ba47d973e539b4f518d0a7374ee3...c4a3fb9939bf80735f3b04f604286936c10a54dd",
+    "html_url": "https://github.com/arkachoudhury9-art/front-end/compare/a59aa4660b57ba47d973e539b4f518d0a7374ee3...c4a3fb9939bf80735f3b04f604286936c10a54dd",
+    "status": "ahead",
+    "ahead_by": 1,
+    "behind_by": 0,
+    "total_commits": 1,
+    "files": [
+        {
+            "sha": "8083053b5064c35aa514a14490d8a21254f3cfd8",
+            "filename": "src/components/PicaStatusIndicator.tsx",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2,
+            "blob_url": "https://github.com/arkachoudhury9-art/front-end/blob/c4a3fb9939bf80735f3b04f604286936c10a54dd/src%2Fcomponents%2FPicaStatusIndicator.tsx",
+            "raw_url": "https://github.com/arkachoudhury9-art/front-end/raw/c4a3fb9939bf80735f3b04f604286936c10a54dd/src%2Fcomponents%2FPicaStatusIndicator.tsx",
+            "contents_url": "https://api.github.com/repos/arkachoudhury9-art/front-end/contents/src%2Fcomponents%2FPicaStatusIndicator.tsx?ref=c4a3fb9939bf80735f3b04f604286936c10a54dd",
+            "patch": "@@ -8,7 +8,7 @@ const PICA_MESSAGES = [\n   \"PICA is monitoring\",\n   \"PICA is detecting anomaly\",\n   \"PICA is processing sensor data\",\n-  \"PICA is evaluating patterns\",\n+  \"PICA is evaluating pattern\",\n ];\n \n const INTERVAL_MS = 5000;",
+            "previous_filename": null
+        }
+    ],
+    "permalink_url": "https://github.com/arkachoudhury9-art/front-end/compare/arkachoudhury9-art:a59aa46...arkachoudhury9-art:c4a3fb9",
+    "diff_url": "https://github.com/arkachoudhury9-art/front-end/compare/a59aa4660b57ba47d973e539b4f518d0a7374ee3...c4a3fb9939bf80735f3b04f604286936c10a54dd.diff",
+    "patch_url": "https://github.com/arkachoudhury9-art/front-end/compare/a59aa4660b57ba47d973e539b4f518d0a7374ee3...c4a3fb9939bf80735f3b04f604286936c10a54dd.patch",
+    "base_commit": {
+        "sha": "a59aa4660b57ba47d973e539b4f518d0a7374ee3",
+        "node_id": "C_kwDOSvrPK9oAKGE1OWFhNDY2MGI1N2JhNDdkOTczZTUzOWI0ZjUxOGQwYTczNzRlZTM",
+        "commit": {
+            "author": {
+                "name": "Arka",
+                "email": "arka.choudhury9@gmail.com",
+                "date": "2026-09-30T11:13:15Z"
+            },
+            "committer": {
+                "name": "Arka",
+                "email": "arka.choudhury9@gmail.com",
+                "date": "2026-09-30T11:13:15Z"
+            },
+            "message": "defect fix",
+            "tree": {
+                "sha": "7cb84a2849ce226fce1a18f9f442ca4bee76df85",
+                "url": "https://api.github.com/repos/arkachoudhury9-art/front-end/git/trees/7cb84a2849ce226fce1a18f9f442ca4bee76df85"
+            },
+            "url": "https://api.github.com/repos/arkachoudhury9-art/front-end/git/commits/a59aa4660b57ba47d973e539b4f518d0a7374ee3",
+            "comment_count": 0,
+            "verification": {
+                "verified": false,
+                "reason": "unsigned",
+                "signature": null,
+                "payload": null,
+                "verified_at": null
+            }
+        },
+        "url": "https://api.github.com/repos/arkachoudhury9-art/front-end/commits/a59aa4660b57ba47d973e539b4f518d0a7374ee3",
+        "html_url": "https://github.com/arkachoudhury9-art/front-end/commit/a59aa4660b57ba47d973e539b4f518d0a7374ee3",
+        "comments_url": "https://api.github.com/repos/arkachoudhury9-art/front-end/commits/a59aa4660b57ba47d973e539b4f518d0a7374ee3/comments",
+        "author": {
+            "login": "arkachoudhury9-art",
+            "id": 242954244,
+            "node_id": "U_kgDODnswBA",
+            "avatar_url": "https://avatars.githubusercontent.com/u/242954244?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/arkachoudhury9-art",
+            "html_url": "https://github.com/arkachoudhury9-art",
+            "followers_url": "https://api.github.com/users/arkachoudhury9-art/followers",
+            "following_url": "https://api.github.com/users/arkachoudhury9-art/following{/other_user}",
+            "gists_url": "https://api.github.com/users/arkachoudhury9-art/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/arkachoudhury9-art/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/arkachoudhury9-art/subscriptions",
+            "organizations_url": "https://api.github.com/users/arkachoudhury9-art/orgs",
+            "repos_url": "https://api.github.com/users/arkachoudhury9-art/repos",
+            "events_url": "https://api.github.com/users/arkachoudhury9-art/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/arkachoudhury9-art/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "arkachoudhury9-art",
+            "id": 242954244,
+            "node_id": "U_kgDODnswBA",
+            "avatar_url": "https://avatars.githubusercontent.com/u/242954244?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/arkachoudhury9-art",
+            "html_url": "https://github.com/arkachoudhury9-art",
+            "followers_url": "https://api.github.com/users/arkachoudhury9-art/followers",
+            "following_url": "https://api.github.com/users/arkachoudhury9-art/following{/other_user}",
+            "gists_url": "https://api.github.com/users/arkachoudhury9-art/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/arkachoudhury9-art/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/arkachoudhury9-art/subscriptions",
+            "organizations_url": "https://api.github.com/users/arkachoudhury9-art/orgs",
+            "repos_url": "https://api.github.com/users/arkachoudhury9-art/repos",
+            "events_url": "https://api.github.com/users/arkachoudhury9-art/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/arkachoudhury9-art/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "d003224ec45d050530f1339c10f7a265d311194d",
+                "url": "https://api.github.com/repos/arkachoudhury9-art/front-end/commits/d003224ec45d050530f1339c10f7a265d311194d",
+                "html_url": "https://github.com/arkachoudhury9-art/front-end/commit/d003224ec45d050530f1339c10f7a265d311194d"
+            }
+        ]
+    },
+    "merge_base_commit": {
+        "sha": "a59aa4660b57ba47d973e539b4f518d0a7374ee3",
+        "node_id": "C_kwDOSvrPK9oAKGE1OWFhNDY2MGI1N2JhNDdkOTczZTUzOWI0ZjUxOGQwYTczNzRlZTM",
+        "commit": {
+            "author": {
+                "name": "Arka",
+                "email": "arka.choudhury9@gmail.com",
+                "date": "2026-09-30T11:13:15Z"
+            },
+            "committer": {
+                "name": "Arka",
+                "email": "arka.choudhury9@gmail.com",
+                "date": "2026-09-30T11:13:15Z"
+            },
+            "message": "defect fix",
+            "tree": {
+                "sha": "7cb84a2849ce226fce1a18f9f442ca4bee76df85",
+                "url": "https://api.github.com/repos/arkachoudhury9-art/front-end/git/trees/7cb84a2849ce226fce1a18f9f442ca4bee76df85"
+            },
+            "url": "https://api.github.com/repos/arkachoudhury9-art/front-end/git/commits/a59aa4660b57ba47d973e539b4f518d0a7374ee3",
+            "comment_count": 0,
+            "verification": {
+                "verified": false,
+                "reason": "unsigned",
+                "signature": null,
+                "payload": null,
+                "verified_at": null
+            }
+        },
+        "url": "https://api.github.com/repos/arkachoudhury9-art/front-end/commits/a59aa4660b57ba47d973e539b4f518d0a7374ee3",
+        "html_url": "https://github.com/arkachoudhury9-art/front-end/commit/a59aa4660b57ba47d973e539b4f518d0a7374ee3",
+        "comments_url": "https://api.github.com/repos/arkachoudhury9-art/front-end/commits/a59aa4660b57ba47d973e539b4f518d0a7374ee3/comments",
+        "author": {
+            "login": "arkachoudhury9-art",
+            "id": 242954244,
+            "node_id": "U_kgDODnswBA",
+            "avatar_url": "https://avatars.githubusercontent.com/u/242954244?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/arkachoudhury9-art",
+            "html_url": "https://github.com/arkachoudhury9-art",
+            "followers_url": "https://api.github.com/users/arkachoudhury9-art/followers",
+            "following_url": "https://api.github.com/users/arkachoudhury9-art/following{/other_user}",
+            "gists_url": "https://api.github.com/users/arkachoudhury9-art/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/arkachoudhury9-art/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/arkachoudhury9-art/subscriptions",
+            "organizations_url": "https://api.github.com/users/arkachoudhury9-art/orgs",
+            "repos_url": "https://api.github.com/users/arkachoudhury9-art/repos",
+            "events_url": "https://api.github.com/users/arkachoudhury9-art/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/arkachoudhury9-art/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "arkachoudhury9-art",
+            "id": 242954244,
+            "node_id": "U_kgDODnswBA",
+            "avatar_url": "https://avatars.githubusercontent.com/u/242954244?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/arkachoudhury9-art",
+            "html_url": "https://github.com/arkachoudhury9-art",
+            "followers_url": "https://api.github.com/users/arkachoudhury9-art/followers",
+            "following_url": "https://api.github.com/users/arkachoudhury9-art/following{/other_user}",
+            "gists_url": "https://api.github.com/users/arkachoudhury9-art/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/arkachoudhury9-art/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/arkachoudhury9-art/subscriptions",
+            "organizations_url": "https://api.github.com/users/arkachoudhury9-art/orgs",
+            "repos_url": "https://api.github.com/users/arkachoudhury9-art/repos",
+            "events_url": "https://api.github.com/users/arkachoudhury9-art/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/arkachoudhury9-art/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "d003224ec45d050530f1339c10f7a265d311194d",
+                "url": "https://api.github.com/repos/arkachoudhury9-art/front-end/commits/d003224ec45d050530f1339c10f7a265d311194d",
+                "html_url": "https://github.com/arkachoudhury9-art/front-end/commit/d003224ec45d050530f1339c10f7a265d311194d"
+            }
+        ]
+    },
+    "commits": [
+        {
+            "sha": "c4a3fb9939bf80735f3b04f604286936c10a54dd",
+            "node_id": "C_kwDOSvrPK9oAKGM0YTNmYjk5MzliZjgwNzM1ZjNiMDRmNjA0Mjg2OTM2YzEwYTU0ZGQ",
+            "commit": {
+                "author": {
+                    "name": "Arka",
+                    "email": "arka.choudhury9@gmail.com",
+                    "date": "2026-09-30T11:27:58Z"
+                },
+                "committer": {
+                    "name": "Arka",
+                    "email": "arka.choudhury9@gmail.com",
+                    "date": "2026-09-30T11:27:58Z"
+                },
+                "message": "changing text",
+                "tree": {
+                    "sha": "fe6770ea6c556625f3b17fbe4306c6040d03b0d4",
+                    "url": "https://api.github.com/repos/arkachoudhury9-art/front-end/git/trees/fe6770ea6c556625f3b17fbe4306c6040d03b0d4"
+                },
+                "url": "https://api.github.com/repos/arkachoudhury9-art/front-end/git/commits/c4a3fb9939bf80735f3b04f604286936c10a54dd",
+                "comment_count": 0,
+                "verification": {
+                    "verified": false,
+                    "reason": "unsigned",
+                    "signature": null,
+                    "payload": null,
+                    "verified_at": null
+                }
+            },
+            "url": "https://api.github.com/repos/arkachoudhury9-art/front-end/commits/c4a3fb9939bf80735f3b04f604286936c10a54dd",
+            "html_url": "https://github.com/arkachoudhury9-art/front-end/commit/c4a3fb9939bf80735f3b04f604286936c10a54dd",
+            "comments_url": "https://api.github.com/repos/arkachoudhury9-art/front-end/commits/c4a3fb9939bf80735f3b04f604286936c10a54dd/comments",
+            "author": {
+                "login": "arkachoudhury9-art",
+                "id": 242954244,
+                "node_id": "U_kgDODnswBA",
+                "avatar_url": "https://avatars.githubusercontent.com/u/242954244?v=4",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/arkachoudhury9-art",
+                "html_url": "https://github.com/arkachoudhury9-art",
+                "followers_url": "https://api.github.com/users/arkachoudhury9-art/followers",
+                "following_url": "https://api.github.com/users/arkachoudhury9-art/following{/other_user}",
+                "gists_url": "https://api.github.com/users/arkachoudhury9-art/gists{/gist_id}",
+                "starred_url": "https://api.github.com/users/arkachoudhury9-art/starred{/owner}{/repo}",
+                "subscriptions_url": "https://api.github.com/users/arkachoudhury9-art/subscriptions",
+                "organizations_url": "https://api.github.com/users/arkachoudhury9-art/orgs",
+                "repos_url": "https://api.github.com/users/arkachoudhury9-art/repos",
+                "events_url": "https://api.github.com/users/arkachoudhury9-art/events{/privacy}",
+                "received_events_url": "https://api.github.com/users/arkachoudhury9-art/received_events",
+                "type": "User",
+                "user_view_type": "public",
+                "site_admin": false
+            },
+            "committer": {
+                "login": "arkachoudhury9-art",
+                "id": 242954244,
+                "node_id": "U_kgDODnswBA",
+                "avatar_url": "https://avatars.githubusercontent.com/u/242954244?v=4",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/arkachoudhury9-art",
+                "html_url": "https://github.com/arkachoudhury9-art",
+                "followers_url": "https://api.github.com/users/arkachoudhury9-art/followers",
+                "following_url": "https://api.github.com/users/arkachoudhury9-art/following{/other_user}",
+                "gists_url": "https://api.github.com/users/arkachoudhury9-art/gists{/gist_id}",
+                "starred_url": "https://api.github.com/users/arkachoudhury9-art/starred{/owner}{/repo}",
+                "subscriptions_url": "https://api.github.com/users/arkachoudhury9-art/subscriptions",
+                "organizations_url": "https://api.github.com/users/arkachoudhury9-art/orgs",
+                "repos_url": "https://api.github.com/users/arkachoudhury9-art/repos",
+                "events_url": "https://api.github.com/users/arkachoudhury9-art/events{/privacy}",
+                "received_events_url": "https://api.github.com/users/arkachoudhury9-art/received_events",
+                "type": "User",
+                "user_view_type": "public",
+                "site_admin": false
+            },
+            "parents": [
+                {
+                    "sha": "a59aa4660b57ba47d973e539b4f518d0a7374ee3",
+                    "url": "https://api.github.com/repos/arkachoudhury9-art/front-end/commits/a59aa4660b57ba47d973e539b4f518d0a7374ee3",
+                    "html_url": "https://github.com/arkachoudhury9-art/front-end/commit/a59aa4660b57ba47d973e539b4f518d0a7374ee3"
+                }
+            ]
+        }
+    ]
+}

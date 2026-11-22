@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:api": "cd ../backend && PYTHONUNBUFFERED=1 uv run uvicorn main:app --reload --port ${API_PORT:-8000}",
+    "dev:web": "NEXT_PUBLIC_API_URL=http://127.0.0.1:${API_PORT:-8000} next dev",
+    "dev:all": "concurrently --kill-others --names api,web --prefix-colors blue,green \"npm:dev:api\" \"npm:dev:web\"",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^9.5.0",
+    "@mui/material": "^9.5.0",
+    "@mui/material-nextjs": "^9.5.0",
+    "next": "^16.3.6",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.5.2",
+    "@types/react": "19.1.16",
+    "@types/react-dom": "19.1.9",
+    "concurrently": "^10.0.6",
+    "typescript": "5.9.2"
+  }
+}
