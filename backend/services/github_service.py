@@ -52,6 +52,12 @@ class GithubService:
         )
         return GitSourceTree.model_validate(payload)
 
+    async def get_repository_snapshot(self, repo_name: str, commit_sha: str) -> bytes:
+        response = await self._get(
+            f"/repos/{repo_name}/zipball/{commit_sha}")
+        response.raise_for_status()
+        return response.content
+
     async def get_code_changes(
         self,
         repo_name: str,

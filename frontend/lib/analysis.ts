@@ -7,9 +7,16 @@ export type ChangedFile = {
   criticality: string;
 };
 
+export type RegressionRisk = {
+  risk: string;
+  reason: string;
+  affected_area: string;
+  severity: string;
+};
+
 export type AnalysisResponse = {
   change_summary: string;
-  regression_risks: string[];
+  regression_risks: RegressionRisk[];
   changed_files: ChangedFile[];
 };
 

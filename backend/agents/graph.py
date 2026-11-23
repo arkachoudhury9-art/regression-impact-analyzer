@@ -1,7 +1,7 @@
 import json
 
 from langgraph.graph import END, START, StateGraph
-from prompts.prompt import LOW_ANALYSIS_PROMPT
+from prompts.low_analysis import LOW_ANALYSIS_PROMPT
 
 from agents.nodes import _client, analyze_changed_files
 from agents.state import RegressionState

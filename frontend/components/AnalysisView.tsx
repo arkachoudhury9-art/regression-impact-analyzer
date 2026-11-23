@@ -21,6 +21,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { type AnalysisResponse, type ChangedFile, readStoredChangeIds, requestAnalysis } from "../lib/analysis";
 import { type Criticality, CRITICALITY_RANK } from "../lib/changes";
+import CriticalityChip from "./CriticalityChip";
 
 type RequestState = "requesting" | "ready" | "failed";
 
@@ -186,9 +187,9 @@ function AnalysisResult({ analysis }: { analysis: AnalysisResponse }) {
               No regression risks were identified.
             </Typography>
           ) : (
-            <Stack spacing={1.25}>
-              {analysis.regression_risks.map((risk, index) => (
-                <Stack key={`${index}-${risk}`} direction="row" spacing={1.5} sx={{ alignItems: "flex-start" }}>
+            <Stack spacing={1.5}>
+              {analysis.regression_risks.map((item, index) => (
+                <Stack key={`${index}-${item.risk}`} direction="row" spacing={1.5} sx={{ alignItems: "flex-start" }}>
                   <Box
                     aria-hidden
                     sx={{
@@ -207,9 +208,20 @@ function AnalysisResult({ analysis }: { analysis: AnalysisResponse }) {
                   >
                     {index + 1}
                   </Box>
-                  <Typography variant="body2" sx={{ lineHeight: 1.65 }}>
-                    {risk}
-                  </Typography>
+                  <Stack spacing={0.5} sx={{ minWidth: 0 }}>
+                    <Stack direction="row" spacing={1} useFlexGap sx={{ alignItems: "center", flexWrap: "wrap" }}>
+                      <Typography variant="body2" sx={{ fontWeight: 600, lineHeight: 1.5 }}>
+                        {item.risk}
+                      </Typography>
+                      <CriticalityChip criticality={toCriticality(item.severity)} />
+                    </Stack>
+                    <Typography variant="caption" color="text.secondary">
+                      {item.affected_area}
+                    </Typography>
+                    <Typography variant="body2" sx={{ lineHeight: 1.65 }}>
+                      {item.reason}
+                    </Typography>
+                  </Stack>
                 </Stack>
               ))}
             </Stack>

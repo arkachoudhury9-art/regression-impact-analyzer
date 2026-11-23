@@ -12,7 +12,14 @@ class ChangedFileResponse(BaseModel):
     criticality: str
 
 
+class RegressionRiskResponse(BaseModel):
+    risk: str
+    reason: str
+    affected_area: str
+    severity: str
+
+
 class AnalysisResponse(BaseModel):
     change_summary: str
-    regression_risks: list[str]
+    regression_risks: list[RegressionRiskResponse]
     changed_files: list[ChangedFileResponse]
