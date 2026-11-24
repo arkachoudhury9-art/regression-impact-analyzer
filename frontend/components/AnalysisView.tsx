@@ -41,6 +41,19 @@ const sectionAccordionSx = {
   "&.Mui-expanded": { margin: 0 },
 } as const;
 
+const diffSx = {
+  m: 0,
+  p: 1.25,
+  overflow: "auto",
+  maxHeight: 220,
+  borderRadius: 1,
+  bgcolor: "background.paper",
+  fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+  fontSize: 12,
+  lineHeight: 1.5,
+  whiteSpace: "pre",
+} as const;
+
 function toCriticality(value: string): Criticality | null {
   if (value === "low" || value === "medium" || value === "high") {
     return value;
@@ -136,23 +149,30 @@ function AnalysisResult({ analysis }: { analysis: AnalysisResponse }) {
               No changed files were returned.
             </Typography>
           ) : (
-            <Stack spacing={0.75}>
-              {analysis.changed_files.map((file) => (
-                <Box
-                  key={file.file_path}
+            <Stack spacing={1.25}>
+              {analysis.changed_files.map((file, index) => (
+                <Stack
+                  key={`${index}-${file.file_path}`}
+                  spacing={1}
                   sx={{ px: 1.5, py: 1.25, borderRadius: 1, bgcolor: "#f8f9fb" }}
                 >
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
-                      fontSize: 13,
-                      wordBreak: "break-all",
-                    }}
-                  >
-                    {file.file_path || "Unknown file"}
-                  </Typography>
-                </Box>
+                  <Stack direction="row" spacing={1} useFlexGap sx={{ alignItems: "center", flexWrap: "wrap" }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+                        fontSize: 13,
+                        wordBreak: "break-all",
+                      }}
+                    >
+                      {file.file_path || "Unknown file"}
+                    </Typography>
+                    <CriticalityChip criticality={toCriticality(file.criticality)} />
+                  </Stack>
+                  <Box component="pre" sx={diffSx}>
+                    {file.diff_content.trim() || "No diff was returned."}
+                  </Box>
+                </Stack>
               ))}
             </Stack>
           )}

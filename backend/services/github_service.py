@@ -9,8 +9,10 @@ from config.criticality import CRITICALITY_HIGH_THRESHOLD, CRITICALITY_MEDIUM_TH
 from config.github import GITHUB_ACCEPT_HEADER, GITHUB_API_VERSION
 from dotenv import load_dotenv
 from fastapi import HTTPException
-from models.change import Criticality
+from models.change import Criticality, Repository
 from schemas.github import GitCodeChanges, GitFileContent, GitSourceTree
+from sqlalchemy import select
+from sqlalchemy.orm import Session
 
 load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
@@ -53,9 +55,12 @@ class GithubService:
         return GitSourceTree.model_validate(payload)
 
     async def get_repository_snapshot(self, repo_name: str, commit_sha: str) -> bytes:
-        response = await self._get(
-            f"/repos/{repo_name}/zipball/{commit_sha}")
-        response.raise_for_status()
+        response = await self.client.get(
+            f"/repos/{repo_name}/zipball/{commit_sha}",
+            follow_redirects=True,
+        )
+        if response.status_code != 200:
+            raise HTTPException(status_code=response.status_code, detail=response.text)
         return response.content
 
     async def get_code_changes(
@@ -85,6 +90,15 @@ class GithubService:
             )
         )
         return [GitFileContent.model_validate(payload) for payload in payloads]
+
+    def save_repository(self, db: Session, name: str) -> Repository:
+        repository = db.scalar(select(Repository).where(Repository.name == name))
+        if repository is None:
+            repository = Repository(name=name)
+            db.add(repository)
+            db.commit()
+            db.refresh(repository)
+        return repository
 
     def get_criticality(self, score: float) -> Criticality:
         if score < CRITICALITY_MEDIUM_THRESHOLD:

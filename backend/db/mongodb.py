@@ -3,7 +3,7 @@ import logging
 from config.settings import EnvSettingsLoader, SettingsLoader
 from pymongo import AsyncMongoClient
 
-logger = logging.getLogger("uvicorn.error")
+logger = logging.getLogger(__name__)
 
 
 class MongoDB:

@@ -41,15 +41,24 @@ async def webhook(request: GitHubPushWebhook, db:Annotated[Session, Depends(get_
             github.get_code_changes(repo_name, request.before, request.head_commit.id),
             github.get_file_contents(repo_name, request.head_commit.id, added_modified_file_path_list),
         )
+        repository = github.save_repository(db, repo_name)
     changed_files = build_changed_files(github_file_contents, github_code_changes)
     category_service = ChangeCategoryService()
     change_categories = await asyncio.gather(
         *(
-            category_service.change_category(file["source_code"], file["change"], file["change_id"],file["filename"],github_source_tree=github_source_tree,db=db)
+            category_service.change_category(
+                file["source_code"],
+                file["change"],
+                file["change_id"],
+                file["filename"],
+                github_source_tree=github_source_tree,
+                repository_id=repository.id,
+                commit_sha=request.head_commit.id,
+                db=db,
+            )
             for file in changed_files
         )
     )
-    print(change_categories)
     await asyncio.to_thread(write_request, "changed_files.json", changed_files)
     await asyncio.to_thread(write_request, "request.json", request.model_dump(mode="json"))
     await asyncio.to_thread(write_request, "tree.json", github_source_tree)

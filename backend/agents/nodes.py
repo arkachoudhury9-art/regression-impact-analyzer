@@ -34,7 +34,6 @@ async def analyze_changed_files(state: RegressionState) -> dict:
         ],
     )
     result = json.loads(response.choices[0].message.content)
-    print(result)
     return {
         'change_summary': result['change_summary'],
         'analysis_level': result['analysis_level'],

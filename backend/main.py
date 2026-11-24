@@ -1,3 +1,4 @@
+import logging
 from contextlib import asynccontextmanager
 
 from db.database import Base, engine
@@ -7,6 +8,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from routes.analysis import router as analysis_router
 from routes.change import router as change_router
 from routes.webhook import router as webhook_router
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(levelname)s:%(name)s:%(message)s",
+)
 
 mongodb = MongoDB()
 

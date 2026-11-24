@@ -14,6 +14,8 @@ class ChangeCategoryService:
         file_content, change, change_id, filename = args
         db = kwargs["db"]
         github_source_tree = kwargs["github_source_tree"]
+        repository_id = kwargs["repository_id"]
+        commit_sha = kwargs["commit_sha"]
         settings = self._settings_loader.load()
         category = CHANGE_CATEGORY_PROMPT["category"]
         criticality = CHANGE_CATEGORY_PROMPT["criticality"]
@@ -33,8 +35,6 @@ class ChangeCategoryService:
                     ),
                 },
             )
-        print(response.choices["tone"].choice)
-        print(response.scores["urgency"].score)
         criticality = GithubService().get_criticality(response.scores["urgency"].score)
         tree = github_source_tree.model_dump(mode="json")
          
@@ -43,6 +43,8 @@ class ChangeCategoryService:
             category=response.choices["tone"].choice,
             criticality=criticality,
             file_name=filename,
+            repository_id=repository_id,
+            commit_sha=commit_sha,
             source=ChangeSource(
                 change_pk=change_id,
                 diff=change,
