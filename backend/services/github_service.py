@@ -12,7 +12,7 @@ from fastapi import HTTPException
 from models.change import Criticality, Repository
 from schemas.github import GitCodeChanges, GitFileContent, GitSourceTree
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
@@ -63,6 +63,28 @@ class GithubService:
             raise HTTPException(status_code=response.status_code, detail=response.text)
         return response.content
 
+    async def get_latest_commit_sha(self, repo_name: str, branch: str = "main") -> str:
+        response = await self.client.get(
+            f"/repos/{repo_name}/commits",
+            params={"sha": branch, "per_page": 1},
+        )
+        if response.status_code != 200:
+            raise HTTPException(status_code=response.status_code, detail=response.text)
+        return response.json()[0]["sha"]
+
+    async def get_commit_comparison(
+        self,
+        repo_name: str,
+        before_commit_sha: str,
+        after_commit_sha: str,
+    ) -> dict[str, Any]:
+        response = await self.client.get(
+            f"/repos/{repo_name}/compare/{before_commit_sha}...{after_commit_sha}",
+        )
+        if response.status_code != 200:
+            raise HTTPException(status_code=response.status_code, detail=response.text)
+        return response.json()
+
     async def get_code_changes(
         self,
         repo_name: str,
@@ -91,13 +113,13 @@ class GithubService:
         )
         return [GitFileContent.model_validate(payload) for payload in payloads]
 
-    def save_repository(self, db: Session, name: str) -> Repository:
-        repository = db.scalar(select(Repository).where(Repository.name == name))
+    async def save_repository(self, db: AsyncSession, name: str) -> Repository:
+        repository = await db.scalar(select(Repository).where(Repository.name == name))
         if repository is None:
             repository = Repository(name=name)
             db.add(repository)
-            db.commit()
-            db.refresh(repository)
+            await db.commit()
+            await db.refresh(repository)
         return repository
 
     def get_criticality(self, score: float) -> Criticality:
