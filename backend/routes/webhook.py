@@ -10,7 +10,7 @@ from schemas.github import GitHubPushWebhook
 from services.change_category_service import ChangeCategoryService
 from services.github_service import GithubService
 from services.helper import build_changed_files
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 router = APIRouter(prefix="/webhook", tags=["webhook"])
 
@@ -30,7 +30,7 @@ def write_request(file_name: str, request: Any) -> None:
 
 
 @router.post("/trigger", status_code=200)
-async def webhook(request: GitHubPushWebhook, db:Annotated[Session, Depends(get_db)]):
+async def webhook(request: GitHubPushWebhook, db: Annotated[AsyncSession, Depends(get_db)]):
     if request.head_commit is None:
         return JSONResponse(status_code=400, content={"message": "Missing head commit"})
     repo_name = request.repository.full_name
@@ -41,12 +41,13 @@ async def webhook(request: GitHubPushWebhook, db:Annotated[Session, Depends(get_
             github.get_code_changes(repo_name, request.before, request.head_commit.id),
             github.get_file_contents(repo_name, request.head_commit.id, added_modified_file_path_list),
         )
-        repository = github.save_repository(db, repo_name)
+        repository = await github.save_repository(db, repo_name)
     changed_files = build_changed_files(github_file_contents, github_code_changes)
     category_service = ChangeCategoryService()
-    change_categories = await asyncio.gather(
-        *(
-            category_service.change_category(
+    change_categories = []
+    for file in changed_files:
+        change_categories.append(
+            await category_service.change_category(
                 file["source_code"],
                 file["change"],
                 file["change_id"],
@@ -56,9 +57,7 @@ async def webhook(request: GitHubPushWebhook, db:Annotated[Session, Depends(get_
                 commit_sha=request.head_commit.id,
                 db=db,
             )
-            for file in changed_files
         )
-    )
     await asyncio.to_thread(write_request, "changed_files.json", changed_files)
     await asyncio.to_thread(write_request, "request.json", request.model_dump(mode="json"))
     await asyncio.to_thread(write_request, "tree.json", github_source_tree)

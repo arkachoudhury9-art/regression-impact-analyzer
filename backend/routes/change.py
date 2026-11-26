@@ -5,11 +5,12 @@ from fastapi import APIRouter, Depends
 from models.change import Change
 from schemas.change import ChangeResponse
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 router = APIRouter(prefix="/change", tags=["change"])
 
 
 @router.get("/", response_model=list[ChangeResponse])
-def get_changes(db: Annotated[Session, Depends(get_db)]) -> list[Change]:
-    return list(db.scalars(select(Change).order_by(Change.created_at.desc())))
+async def get_changes(db: Annotated[AsyncSession, Depends(get_db)]) -> list[Change]:
+    result = await db.scalars(select(Change).order_by(Change.created_at.desc()))
+    return list(result.all())

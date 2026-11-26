@@ -2,7 +2,7 @@ from datetime import datetime
 from enum import Enum
 
 from db.database import Base
-from sqlalchemy import JSON, DateTime, ForeignKey, String
+from sqlalchemy import JSON, DateTime, ForeignKey, String, UniqueConstraint
 from sqlalchemy import Enum as SqlEnum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -12,13 +12,18 @@ class Criticality(str, Enum):
     MEDIUM = "medium"
     HIGH = "high"
 
+
 class Repository(Base):
     __tablename__ = "repositories"
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String, index=True)
+    branch: Mapped[str] = mapped_column(String, default="main")
+    latest_commit_sha: Mapped[str | None] = mapped_column(String)
+    checkpoint_sha: Mapped[str | None] = mapped_column(String)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now)
     changes: Mapped[list["Change"]] = relationship(back_populates="repository")
+    __table_args__ = (UniqueConstraint("name", "branch", name="uix_name_branch"),)
 
 class Change(Base):
     __tablename__ = "changes"

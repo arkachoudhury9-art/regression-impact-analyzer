@@ -53,5 +53,5 @@ class ChangeCategoryService:
             ),
         )
         db.add(change_record)
-        db.commit()
+        await db.commit()
         return (response.choices["tone"].choice, response.scores["urgency"].score)
