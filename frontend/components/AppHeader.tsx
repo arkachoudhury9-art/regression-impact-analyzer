@@ -3,6 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 export default function AppHeader() {
   return (
@@ -28,6 +29,11 @@ export default function AppHeader() {
           <Typography variant="caption" sx={{ opacity: 0.8 }}>
             Code change risk overview
           </Typography>
+        </Box>
+        <Box sx={{ ml: "auto" }} >
+          <Button variant="outlined" color="inherit" size="small" href="/repo-form">
+            Repo Form
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>
