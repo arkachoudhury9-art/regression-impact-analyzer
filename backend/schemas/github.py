@@ -17,6 +17,10 @@ class GitHubRepository(GitHubModel):
     private: bool
     default_branch: str
 
+class RepositoryBranchesResponse(BaseModel):
+    repository_name: str
+    branches: list[str]
+
 
 class GitHubPusher(GitHubModel):
     name: str

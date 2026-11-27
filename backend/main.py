@@ -8,6 +8,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.analysis import router as analysis_router
 from routes.change import router as change_router
+from routes.github import router as github_router
 from routes.webhook import router as webhook_router
 from services.github_service import GithubService
 from services.poll_scheduler import PollScheduler, scheduler
@@ -28,16 +29,16 @@ async def lifespan(app: FastAPI) :
         repository_monitor_service = RepositoryMonitorService(GithubService(), db)
         await repository_monitor_service.initialize_checkpoint(github.REPOSITORY_NAME, github.REPOSITORY_BRANCH)
         poll_scheduler = PollScheduler(repository_monitor_service)
-        scheduler.add_job(poll_scheduler.poll, "interval", seconds=10,max_instances=1,coalesce=True,replace_existing=True)
+        scheduler.add_job(poll_scheduler.poll, "interval", seconds=300,max_instances=1,coalesce=True,replace_existing=True)
         scheduler.start()
-    await mongodb.connect()
+    # await mongodb.connect()
     try:
         yield
     
     finally:
         scheduler.shutdown()
-        await mongodb.close()
-        await engine.dispose()
+        # await mongodb.close()
+        # await engine.dispose()
 
 app = FastAPI(lifespan=lifespan)
 app.add_middleware(
@@ -58,4 +59,5 @@ def health() -> dict[str, object]:
 
 app.include_router(webhook_router)
 app.include_router(change_router)
+app.include_router(github_router)
 app.include_router(analysis_router)

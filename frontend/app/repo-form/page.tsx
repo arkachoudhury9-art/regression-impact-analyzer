@@ -7,7 +7,7 @@ export default function RepoFormPage() {
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
       <AppHeader />
-      <Container component="main" maxWidth="sm" sx={{ py: { xs: 4, sm: 8 } }}>
+      <Container component="main" maxWidth="xl" sx={{ py: { xs: 4, sm: 8 } }}>
         <RepoFormView />
       </Container>
     </Box>

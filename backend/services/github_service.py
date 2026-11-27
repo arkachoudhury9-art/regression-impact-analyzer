@@ -72,6 +72,32 @@ class GithubService:
             raise HTTPException(status_code=response.status_code, detail=response.text)
         return response.json()[0]["sha"]
 
+    async def get_branches(self, repo_name: str) -> list[str]:
+        repository_path = "/".join(quote(part, safe="") for part in repo_name.split("/"))
+        branches: list[str] = []
+        page = 1
+
+        while True:
+            response = await self.client.get(
+                f"/repos/{repository_path}/branches",
+                params={"per_page": 100, "page": page},
+            )
+            if response.status_code != 200:
+                raise HTTPException(status_code=response.status_code, detail=response.json())
+
+            payload = response.json()
+            if not isinstance(payload, list):
+                raise HTTPException(status_code=502, detail="GitHub returned an invalid branch list")
+
+            for item in payload:
+                if not isinstance(item, dict) or not isinstance(item.get("name"), str):
+                    raise HTTPException(status_code=502, detail="GitHub returned an invalid branch entry")
+                branches.append(item["name"])
+
+            if len(payload) < 100:
+                return branches
+            page += 1
+
     async def get_commit_comparison(
         self,
         repo_name: str,
